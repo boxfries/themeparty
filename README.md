@@ -1,4 +1,7 @@
+
 # themeparty
+![themeparty](https://user-images.githubusercontent.com/88220844/128652594-77429d36-13dc-4865-a943-fca50285f9e4.gif)
+
 Collection of themes for the oekaki board "Poti-board" by satopian. I figured it'd be wasteful if I kept these to myself, so I decided to share them. More may be added over time.
 # Notice
 I'm new to github and still learning everything. Please be patient with me.
