@@ -455,7 +455,7 @@
 }
  #search body{
      background-color: #020202;
-     background-image: url('http://i.imgur.com/wBGfG.png'), url('http://i.imgur.com/6pJer.png');
+     background-image: url(img/darkbg.png), url(img/darkgrad.png);
      background-repeat: repeat, repeat-x;
      background-position : 0% 0%, 0% 0%;
      background-attachment : fixed;
