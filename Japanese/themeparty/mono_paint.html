@@ -23,9 +23,24 @@
 		<link rel="stylesheet" href="neo.css<% def(parameter_day) %>?<% echo(parameter_day)%><% /def %>" type="text/css">
 		<script src="neo.js<% def(parameter_day) %>?<% echo(parameter_day)%><% /def %>" charset="UTF-8"></script>
 		<% /def %>
+		<script>
+			function fixneo() {
+		
+				if(screen.width>767){//iPad以上の横幅の時は、NEOの網目のところでtouchmoveしない。
+					console.log(screen.width);
+					document.querySelector('#NEO').addEventListener('touchmove', function (e){
+						e.preventDefault();
+						e.stopPropagation();
+					}, { passive: false });
+				}
+			}
+			window.addEventListener('DOMContentLoaded',fixneo,false);
+		</script>
 		<% def(pch_mode) %>
+		<% def(type_neo) %>
 		<link rel="stylesheet" href="neo.css<% def(parameter_day) %>?<% echo(parameter_day)%><% /def %>" type="text/css">
 		<script src="neo.js<% def(parameter_day) %>?<% echo(parameter_day)%><% /def %>" charset="UTF-8"></script>
+		<% /def %>
 		<% /def %>
 		<% def(chickenpaint)%>
 		<style>
@@ -37,13 +52,15 @@
 		}
 		</style>
 		<script>
-			function load() {
-			document.addEventListener("dblclick", function(e){ e.preventDefault();}, { passive: false });
-			}
-			window.onload = load;
+			function fixchicken() {
+				document.addEventListener('dblclick', function(e){ e.preventDefault()}, { passive: false });
+				document.querySelector('#chickenpaint-parent').addEventListener('contextmenu', function (e){
+					e.preventDefault();
+					e.stopPropagation();
+				}, { passive: false });
+				}
+			window.addEventListener('DOMContentLoaded',fixchicken,false);
 		</script>
-
-		
 
 <script src="chickenpaint/js/chickenpaint.min.js<% def(parameter_day) %>?<% echo(parameter_day)%><% /def %>"></script>
 <link rel="stylesheet" type="text/css" href="chickenpaint/css/chickenpaint.css<% def(parameter_day) %>?<% echo(parameter_day)%><% /def %>">
@@ -238,7 +255,7 @@
 						<fieldset>
 							<legend>PALETTE</legend>
 							<select class="form" name="select" size="13" onchange="setPalette()">
-								<option>一時パレット</option>
+								<option>一時保存パレット</option>
 								<% def(dynp) %><?php echo "\n"; ?>
 								<% echo(dynp) %>
 								<% /def %><?php echo "\n"; ?>
@@ -373,7 +390,7 @@
 						<section>
 							<p>
 								ツールバーの殆どのボタンは複数回クリックして機能を切り替える事が出来ます。<br>
-								右クリックで逆周り。その他パレットの色、マスクの色、一字保存ツールに現在の状態を登録、レイヤ表示非表示切り替え等全て右クリックです。<br>
+								右クリックで逆周り。その他パレットの色、マスクの色、一時保存ツールに現在の状態を登録、レイヤ表示非表示切り替え等全て右クリックです。<br>
 								逆にクリックでパレットの色と一時保存ツールに保存しておいた状態を取り出せます。
 							</p>
 						</section>
@@ -435,7 +452,7 @@
 								<dd>
 									透過レイヤー上を白で塗り潰した場合、下のレイヤーが見えなくなりますので上位レイヤーの線を消す時にはこのツールで消す様にして下さい。<br>
 									全消しはすべてを透過ピクセル化させるツールです。<br>
-									全けしを利用する場合はこのツールを選択後キャンバスをクリックでOK。
+									全消しを利用する場合はこのツールを選択後キャンバスをクリックでOK。
 								</dd>
 								<dt>描写方法の指定。(手書き,直線,ベジエ曲線)</dt>
 								<dd>
@@ -471,7 +488,7 @@
 						<h2>投稿に関して</h2>
 						<section>
 							<p>
-								絵が完成したら投稿ボタンで投稿します。絵の投稿が成功した場合は指定されたURLへジャンプします。失敗した場合は失敗したと報告するのみでどこにも飛びません。単に重かっただけである場合少し間を置いた後、再度投稿を試みて下さい。この際二重で投稿される場合があるかもしれませんが、それはWebサーバーかPHP側の処理ですのであしからず。
+								絵が完成したら投稿ボタンで投稿します。絵の投稿が成功した場合は指定されたURLへジャンプします。失敗した場合は失敗したと報告するのみでどこにも飛びません。単に重かっただけである場合少し間を置いた後、再度投稿を試みて下さい。この際二重で投稿される場合があるかもしれませんが、それはWebサーバーかCGI側の処理ですのであしからず。
 							</p>
 						</section>
 					</section>
