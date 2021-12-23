@@ -60,12 +60,15 @@
 			<article>
 				<% def(notres) %>
 				<p class="page">
-					<% def(prev) %><a href="<% echo(prev) %>">≪BACK</a> |<% /def %> <% def(next) %><a href="<% echo(next) %>">NEXT≫</a> <% /def %>
+					<% def(prev) %><a href="<% echo(prev) %>">≪Prev</a><% /def %> | <a href="<% echo(self2) %>">Top</a> |
+					<% def(next) %><a href="<% echo(next) %>">Next≫</a> <% /def %><br>
 					<% echo(paging) %>
 				</p>
 				<% /def %>
 				<form class="delf" action="<% echo(self) %>" method="post">
-					<p>
+					<input type="hidden" name="catalog_pageno" value="<% def(catalog_pageno)%><%% (catalog_pageno)%%><% /def %>">	
+					<input type="hidden" name="mode_catalog" value="on">
+						<p>
 						No <input class="form" type="number" min="1" name="del[]" value="" autocomplete="off">
 						Pass <input class="form" type="password" name="pwd" value="" autocomplete="current-password">
 						<select class="form" name="mode">
