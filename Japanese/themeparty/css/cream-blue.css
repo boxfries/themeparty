@@ -423,6 +423,38 @@
  .del_page form {
      display: inline-block;
 }
+
+.page {
+	margin: 15px 0;
+	text-align: center;
+	line-height: 2.2;
+  }
+  
+  .view_other_works {
+	text-align: center;
+	margin: 15px 0;
+  }
+  
+  .view_other_works div {
+	width: 16.1%;
+	height: auto;
+	margin-right: 0.6%;
+	display: inline-block;
+	max-height: 200px;
+	overflow: hidden;
+	vertical-align: top;
+  }
+  
+  .view_other_works img {
+	width: 100%;
+	height: auto;
+  }
+  
+  .view_other_works div:nth-of-type(6n) {
+	margin-right: 0;
+  }
+  
+  
  @media screen and (max-width: 1920px) {
      header, main > section > .thread, main > article#catalog, footer > article, footer > article.copy, main > section > .thread, main > article#catalog, footer > article {
          width: 75%;
@@ -447,6 +479,29 @@
          font-size: 13px;
     }
 }
+
+ .pcdisp {
+	display: block;
+  }
+  
+  .mobiledisp {
+	display: none;
+  }
+  
+  @media screen and (max-width: 767px) {
+	.pcdisp {
+	  display: none;
+	}
+	.mobiledisp {
+	  display: block;
+	  margin: 15px 0;
+	  white-space: nowrap;
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+	  line-height: 1.8;
+	}
+  }
+  
  @media screen and (max-width: 450px) {
      textarea, input[name="upfile"], textarea[name="upfile"], select[name="upfile"], .se[name="upfile"] {
          width: 15em;
